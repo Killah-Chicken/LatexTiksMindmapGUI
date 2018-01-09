@@ -7,3 +7,12 @@ C:\Users\Lukas\documents\visual studio 2015\Projects\WindowsFormsApplication1\Wi
 C:\Users\Lukas\documents\visual studio 2015\Projects\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\LatexTiksMindMapTool.csproj.GenerateResource.Cache
 C:\Users\Lukas\documents\visual studio 2015\Projects\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
 C:\Users\Lukas\documents\visual studio 2015\Projects\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
+C:\Users\Lukas\Documents\Visual Studio 2015\Projects\MindmapGui\MindMapFormApplication\bin\Debug\LatexTiksMindMapTool.exe.config
+C:\Users\Lukas\Documents\Visual Studio 2015\Projects\MindmapGui\MindMapFormApplication\bin\Debug\LatexTiksMindMapTool.exe
+C:\Users\Lukas\Documents\Visual Studio 2015\Projects\MindmapGui\MindMapFormApplication\bin\Debug\LatexTiksMindMapTool.pdb
+C:\Users\Lukas\Documents\Visual Studio 2015\Projects\MindmapGui\MindMapFormApplication\obj\Debug\LatexTiksMindMapTool.csprojResolveAssemblyReference.cache
+C:\Users\Lukas\Documents\Visual Studio 2015\Projects\MindmapGui\MindMapFormApplication\obj\Debug\LatexTiksMindMapTool.MindmapForm.resources
+C:\Users\Lukas\Documents\Visual Studio 2015\Projects\MindmapGui\MindMapFormApplication\obj\Debug\LatexTiksMindMapTool.Properties.Resources.resources
+C:\Users\Lukas\Documents\Visual Studio 2015\Projects\MindmapGui\MindMapFormApplication\obj\Debug\LatexTiksMindMapTool.csproj.GenerateResource.Cache
+C:\Users\Lukas\Documents\Visual Studio 2015\Projects\MindmapGui\MindMapFormApplication\obj\Debug\LatexTiksMindMapTool.exe
+C:\Users\Lukas\Documents\Visual Studio 2015\Projects\MindmapGui\MindMapFormApplication\obj\Debug\LatexTiksMindMapTool.pdb

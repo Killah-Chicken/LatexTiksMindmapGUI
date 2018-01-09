@@ -1,10 +1,11 @@
 \documentclass[border = 10pt]{standalone}
 \usepackage{tikz}
+\usepackage[ngerman]{babel} %deutsche Trennung und neue Rechtschreibung
 \usetikzlibrary{mindmap,trees}
 \begin{document}
 \pagestyle{empty}
 \begin{tikzpicture}
-\path[mindmap, concept color =  black, text =white]
+\path[mindmap, concept color =red, text =white]
 node[concept] {VDL}
 [clockwise from = 0]
 child[concept color=blue,sibling angle=60] {

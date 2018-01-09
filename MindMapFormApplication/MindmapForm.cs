@@ -18,6 +18,7 @@ namespace LatexTiksMindMapTool
         private Node current;
         private bool switchOutputPdf;
         private bool enableSubmitting= true;
+        private readonly string workingDirectory = System.IO.Directory.GetCurrentDirectory() +"\\";
         private readonly string pathTemp =  System.IO.Path.GetTempPath();
         private readonly string header = "\\documentclass[border = 10pt]{standalone}\n\\usepackage{tikz}\n\\usepackage[ngerman]{babel} %deutsche Trennung und neue Rechtschreibung\n" +
             "\\usetikzlibrary{mindmap,trees}\n" +
@@ -28,11 +29,27 @@ namespace LatexTiksMindMapTool
         public MindmapForm()
         {
             InitializeComponent();
+            loadFileNames();
+            loadFile("mindmap",pathTemp);            
+        }
+        private void loadFileNames()
+        {
+            var files = System.IO.Directory.GetFiles(workingDirectory);
+            for (var i = 0; i < files.Length; i++)
+            {
+                if(files[i].Contains(".tex"))
+                {
+                    filesListBox.Items.Add(files[i].Substring(files[i].LastIndexOf("\\")+1 ,  files[i].Length - files[i].LastIndexOf("\\") - 5));
+                }
+            }
+        }
+        private void loadFile(string file, string filePath)
+        {
             switchOutputPdf = false;
-            string code = System.IO.File.ReadAllText(pathTemp + "mindmap.tex");
+            string code = System.IO.File.ReadAllText(filePath + file + ".tex");
             code = code.Substring(code.IndexOf("concept color"));
             int startIndex = code.IndexOf("=") + 1;
-            string color = code.Substring(startIndex, Math.Min(code.IndexOf(","), code.IndexOf("]"))- startIndex);
+            string color = code.Substring(startIndex, Math.Min(code.IndexOf(","), code.IndexOf("]")) - startIndex);
             startIndex = code.IndexOf("]") + 1;
             code = code.Substring(startIndex, code.Length - startIndex);
             root = Node.recursiveMindmapCreatingFromTexCode(code, color, 0, false);
@@ -51,7 +68,7 @@ namespace LatexTiksMindMapTool
                 root.Node2LatexCode() +
                 ";\n" +
                 "\\end{tikzpicture}\\end{document};";
-            string fileName = pathTemp + "mindmap.tex";
+            string fileName = workingDirectory + "mindmap.tex";
             System.IO.File.WriteAllText(fileName, code);
 
         }
@@ -204,6 +221,15 @@ namespace LatexTiksMindMapTool
         private void siblingAngleChildrenTrackBar_Scroll(object sender, EventArgs e)
         {
             siblingAngleChildrenNumericUpDown.Value = siblingAngleChildrenTrackBar.Value;
+        }
+
+        private void filesListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(filesListBox.SelectedIndex < 0)
+            {  
+                return;
+            }
+            loadFile(filesListBox.SelectedItem.ToString(), workingDirectory);
         }
     }
 }

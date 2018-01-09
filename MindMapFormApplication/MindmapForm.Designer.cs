@@ -50,6 +50,7 @@
             this.deleteNodeButton = new System.Windows.Forms.Button();
             this.startAngleTrackBar = new System.Windows.Forms.TrackBar();
             this.siblingAngleChildrenTrackBar = new System.Windows.Forms.TrackBar();
+            this.filesListBox = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.startAngleNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.levelDistanceTrackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.levelDistanceNumericUpDown)).BeginInit();
@@ -269,11 +270,21 @@
             this.siblingAngleChildrenTrackBar.TabIndex = 25;
             this.siblingAngleChildrenTrackBar.Scroll += new System.EventHandler(this.siblingAngleChildrenTrackBar_Scroll);
             // 
+            // filesListBox
+            // 
+            this.filesListBox.FormattingEnabled = true;
+            this.filesListBox.Location = new System.Drawing.Point(283, 56);
+            this.filesListBox.Name = "filesListBox";
+            this.filesListBox.Size = new System.Drawing.Size(148, 69);
+            this.filesListBox.TabIndex = 26;
+            this.filesListBox.SelectedIndexChanged += new System.EventHandler(this.filesListBox_SelectedIndexChanged);
+            // 
             // MindmapForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1232, 598);
+            this.Controls.Add(this.filesListBox);
             this.Controls.Add(this.siblingAngleChildrenTrackBar);
             this.Controls.Add(this.startAngleTrackBar);
             this.Controls.Add(this.deleteNodeButton);
@@ -332,6 +343,7 @@
         private System.Windows.Forms.Button deleteNodeButton;
         private System.Windows.Forms.TrackBar startAngleTrackBar;
         private System.Windows.Forms.TrackBar siblingAngleChildrenTrackBar;
+        private System.Windows.Forms.ListBox filesListBox;
     }
 }
 
