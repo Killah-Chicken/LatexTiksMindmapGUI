@@ -1,0 +1,48 @@
+\documentclass[border = 10pt]{standalone}
+\usepackage{tikz}
+\usepackage[ngerman]{babel} %deutsche Trennung und neue Rechtschreibung
+\usetikzlibrary{mindmap,trees}
+\begin{document}
+\pagestyle{empty}
+\begin{tikzpicture}
+\path[mindmap, concept color =  black, text =white]
+node[concept] {VHDL}
+[clockwise from = 0]
+child[concept color=blue,sibling angle=60] {
+node[concept] {Trivia}
+[counterclockwise from = 0]
+child[concept color=blue,sibling angle=60] {
+node[concept] {Abk. für \underline{V}HSIC-HDL}
+[clockwise from = 0]
+child[concept color=blue,sibling angle=60] {
+node[concept] {\underline{VHSIC} Very High Speed Integrated Circuits}
+[clockwise from = 0]
+}
+child[concept color=blue,sibling angle=60] {
+node[concept] {\underline{HDL}: Hardware Description Language}
+[clockwise from = 0]
+}
+}
+child[concept color=blue!90,sibling angle=60] {
+node[concept] {Ziel der Entwicklung}
+[clockwise from = 180]
+child[concept color=blue!90,sibling angle=60] {
+node[concept] {Unabhaengigkeit von verwendeter Technologie und Entwurfmethodik}
+[clockwise from = 0]
+}
+child[concept color=blue!70, level distance = 17.36em,sibling angle=60] {
+node[concept] {Beschreibung von Schaltungen auf versch. Abstraktionsebenen unter Verwendung versch. Sichtweisen}
+[clockwise from = 0]
+child[concept color=blue!70,sibling angle=60] {
+node[concept] {Node Nr1}
+[clockwise from = 0]
+}
+}
+child[concept color=blue!90,sibling angle=60] {
+node[concept] {Validierung mittels einzigen Simulator}
+[clockwise from = 0]
+}
+}
+}
+;
+\end{tikzpicture}\end{document};
