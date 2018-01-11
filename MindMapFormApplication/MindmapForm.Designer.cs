@@ -60,6 +60,7 @@
             this.childUpButton = new System.Windows.Forms.Button();
             this.childDownButton = new System.Windows.Forms.Button();
             this.selectChildcheckBox = new System.Windows.Forms.CheckBox();
+            this.currentToRootButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.startAngleNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.levelDistanceTrackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.levelDistanceNumericUpDown)).BeginInit();
@@ -108,7 +109,7 @@
             // 
             this.backToParentButton.Location = new System.Drawing.Point(16, 12);
             this.backToParentButton.Name = "backToParentButton";
-            this.backToParentButton.Size = new System.Drawing.Size(80, 23);
+            this.backToParentButton.Size = new System.Drawing.Size(57, 23);
             this.backToParentButton.TabIndex = 5;
             this.backToParentButton.Text = "<<";
             this.backToParentButton.UseVisualStyleBackColor = true;
@@ -350,39 +351,53 @@
             // 
             // childUpButton
             // 
-            this.childUpButton.Location = new System.Drawing.Point(13, 262);
+            this.childUpButton.Location = new System.Drawing.Point(12, 287);
             this.childUpButton.Name = "childUpButton";
             this.childUpButton.Size = new System.Drawing.Size(147, 22);
             this.childUpButton.TabIndex = 33;
             this.childUpButton.Text = "UP";
             this.childUpButton.UseVisualStyleBackColor = true;
+            this.childUpButton.Visible = false;
             this.childUpButton.Click += new System.EventHandler(this.childUpButton_Click);
             // 
             // childDownButton
             // 
-            this.childDownButton.Location = new System.Drawing.Point(13, 290);
+            this.childDownButton.Location = new System.Drawing.Point(12, 315);
             this.childDownButton.Name = "childDownButton";
             this.childDownButton.Size = new System.Drawing.Size(147, 22);
             this.childDownButton.TabIndex = 34;
             this.childDownButton.Text = "Down";
             this.childDownButton.UseVisualStyleBackColor = true;
+            this.childDownButton.Visible = false;
             this.childDownButton.Click += new System.EventHandler(this.childDownButton_Click);
             // 
             // selectChildcheckBox
             // 
             this.selectChildcheckBox.AutoSize = true;
-            this.selectChildcheckBox.Location = new System.Drawing.Point(12, 319);
+            this.selectChildcheckBox.Location = new System.Drawing.Point(12, 264);
             this.selectChildcheckBox.Name = "selectChildcheckBox";
-            this.selectChildcheckBox.Size = new System.Drawing.Size(82, 17);
+            this.selectChildcheckBox.Size = new System.Drawing.Size(84, 17);
             this.selectChildcheckBox.TabIndex = 35;
-            this.selectChildcheckBox.Text = "Select Child";
+            this.selectChildcheckBox.Text = "Switch Child";
             this.selectChildcheckBox.UseVisualStyleBackColor = true;
+            this.selectChildcheckBox.CheckedChanged += new System.EventHandler(this.selectChildcheckBox_CheckedChanged);
+            // 
+            // currentToRootButton
+            // 
+            this.currentToRootButton.Location = new System.Drawing.Point(80, 12);
+            this.currentToRootButton.Name = "currentToRootButton";
+            this.currentToRootButton.Size = new System.Drawing.Size(80, 36);
+            this.currentToRootButton.TabIndex = 36;
+            this.currentToRootButton.Text = "Make current\r\nNode to Root";
+            this.currentToRootButton.UseVisualStyleBackColor = true;
+            this.currentToRootButton.Click += new System.EventHandler(this.currentToRootButton_Click);
             // 
             // MindmapForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1232, 598);
+            this.Controls.Add(this.currentToRootButton);
             this.Controls.Add(this.selectChildcheckBox);
             this.Controls.Add(this.childDownButton);
             this.Controls.Add(this.childUpButton);
@@ -461,6 +476,7 @@
         private System.Windows.Forms.Button childUpButton;
         private System.Windows.Forms.Button childDownButton;
         private System.Windows.Forms.CheckBox selectChildcheckBox;
+        private System.Windows.Forms.Button currentToRootButton;
     }
 }
 

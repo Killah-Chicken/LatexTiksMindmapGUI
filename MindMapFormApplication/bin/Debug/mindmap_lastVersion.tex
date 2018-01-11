@@ -5,16 +5,44 @@
 \begin{document}
 \pagestyle{empty}
 \begin{tikzpicture}
-\path[mindmap, concept color =red, text =white]
+\path[mindmap, concept color =black, text =white]
+node[concept] {newParent4}
+[clockwise from = 0]
+child[concept color=black,sibling angle=60] {
+node[concept] {newParent3}
+[clockwise from = 0]
+child[concept color=black,sibling angle=60] {
+node[concept] {newParent2}
+[clockwise from = 0]
+child[concept color=black,sibling angle=60] {
+node[concept] {newParent}
+[clockwise from = 0]
+child[concept color=red,sibling angle=60] {
 node[concept] {VDL}
 [clockwise from = 0]
+child[concept color=red,sibling angle=60] {
+node[concept] {Node Nr2}
+[clockwise from = 0]
+}
 child[concept color=blue, level distance = 55.37em,sibling angle=60] {
 node[concept] {Node Nr1}
 [clockwise from = 0]
 }
-child[concept color=red,sibling angle=60] {
+}
+}
+}
+child[concept color=black,sibling angle=60] {
 node[concept] {Node Nr2}
 [clockwise from = 0]
+child[concept color=black,sibling angle=60] {
+node[concept] {Node Nr1}
+[clockwise from = 0]
+}
+}
+child[concept color=black,sibling angle=60] {
+node[concept] {Node Nr3}
+[clockwise from = 0]
+}
 }
 ;
 \end{tikzpicture}\end{document};

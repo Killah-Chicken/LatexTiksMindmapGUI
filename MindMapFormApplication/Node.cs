@@ -42,9 +42,23 @@ namespace LatexTiksMindMapTool
         }
         public Node createParentNode()
         {
-            Node parent = new Node("black", 15, false, "newParent");
+            string number = content.Contains("newParent")?"2":"";
+            if (number == "2" && content.Length > 9)
+            {
+                number = (Convert.ToInt16(content.Substring(9)) + 1).ToString();
+            }
+            Node parent = new Node("black", 15, false, "newParent" + number);
             parent.addChild(this);
             return parent;
+        }
+        public int countSubNodes()
+        {
+            int c = 1;
+            foreach(var child in children)
+            {
+                c += child.countSubNodes();
+            }
+            return c;
         }
         public Node deepCopy()
         {

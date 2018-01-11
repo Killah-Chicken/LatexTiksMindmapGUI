@@ -17,7 +17,6 @@ namespace LatexTiksMindMapTool
         private Stack<Node> previous;
         private Stack<int> previousIndex;
         private Node current;
-        private int childrenListBoxSelectedIndexBefore;
         private bool switchOutputPdf;
         private bool enableSubmitting= true;
         private readonly string workingDirectory = System.IO.Directory.GetCurrentDirectory() +"\\";
@@ -31,7 +30,6 @@ namespace LatexTiksMindMapTool
         public MindmapForm()
         {
             InitializeComponent();
-            childrenListBoxSelectedIndexBefore = -1;
             webBrowser.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right | AnchorStyles.Left | AnchorStyles.Top);
             copy = null;
             loadFileNames();
@@ -104,12 +102,13 @@ namespace LatexTiksMindMapTool
             if (previous.Count < 1)
             {
                 root = root.createParentNode();
-                previous.Push(root);
-                previousIndex.Push(0);
-                return;
+                current = root;
             }
-            current = previous.Pop();
-            previousIndex.Pop(); 
+            else
+            {
+                current = previous.Pop();
+                previousIndex.Pop();
+            } 
             loadCurrentNode();
         }
 
@@ -199,19 +198,10 @@ namespace LatexTiksMindMapTool
         {
             if (previousIndex.Count == 0)
             {
-                if (childrenListBox.Items.Count > 1)
-                {
-                    MessageBox.Show("Not Possible");
-                    return;
-                }
-                root = root.getChild(0);
-                current = root;
+                return;
             }
-            else
-            {
-                current = previous.Pop();
-                current.removeChild(previousIndex.Pop());
-            }
+            current = previous.Pop();
+            current.removeChild(previousIndex.Pop());
             loadCurrentNode();
         }
 
@@ -317,6 +307,32 @@ namespace LatexTiksMindMapTool
             int nextIndex = (childrenListBox.Items.Count + (childrenListBox.SelectedIndex + direction)) % childrenListBox.Items.Count;
             loadCurrentNode();
             childrenListBox.SelectedIndex = nextIndex;
+        }
+
+        private void selectChildcheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            childDownButton.Visible = selectChildcheckBox.Checked;
+            childUpButton.Visible = selectChildcheckBox.Checked;
+        }
+
+        private void currentToRootButton_Click(object sender, EventArgs e)
+        {
+            if(current == root)
+            {
+                return;
+            }
+            int nodesToDelete = root.countSubNodes() - current.countSubNodes();
+            var dR = DialogResult.OK;  
+            if (nodesToDelete > 1)
+            {
+                dR = MessageBox.Show("Seriously? You are about to delete " + nodesToDelete + " fucking nodes with this action", "Deleting " + nodesToDelete + " nodes...", MessageBoxButtons.OKCancel);
+            }
+            if(dR == DialogResult.OK)
+            {
+                root = current;
+                previous = new Stack<Node>();
+                previousIndex = new Stack<int>();
+            }
         }
     }
 }
