@@ -57,6 +57,9 @@
             this.createFromSelectedNodeCheckBox = new System.Windows.Forms.CheckBox();
             this.copyNodeButton = new System.Windows.Forms.Button();
             this.pasteNodeButton = new System.Windows.Forms.Button();
+            this.childUpButton = new System.Windows.Forms.Button();
+            this.childDownButton = new System.Windows.Forms.Button();
+            this.selectChildcheckBox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.startAngleNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.levelDistanceTrackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.levelDistanceNumericUpDown)).BeginInit();
@@ -345,11 +348,44 @@
             this.pasteNodeButton.Visible = false;
             this.pasteNodeButton.Click += new System.EventHandler(this.pasteNodeButton_Click);
             // 
+            // childUpButton
+            // 
+            this.childUpButton.Location = new System.Drawing.Point(13, 262);
+            this.childUpButton.Name = "childUpButton";
+            this.childUpButton.Size = new System.Drawing.Size(147, 22);
+            this.childUpButton.TabIndex = 33;
+            this.childUpButton.Text = "UP";
+            this.childUpButton.UseVisualStyleBackColor = true;
+            this.childUpButton.Click += new System.EventHandler(this.childUpButton_Click);
+            // 
+            // childDownButton
+            // 
+            this.childDownButton.Location = new System.Drawing.Point(13, 290);
+            this.childDownButton.Name = "childDownButton";
+            this.childDownButton.Size = new System.Drawing.Size(147, 22);
+            this.childDownButton.TabIndex = 34;
+            this.childDownButton.Text = "Down";
+            this.childDownButton.UseVisualStyleBackColor = true;
+            this.childDownButton.Click += new System.EventHandler(this.childDownButton_Click);
+            // 
+            // selectChildcheckBox
+            // 
+            this.selectChildcheckBox.AutoSize = true;
+            this.selectChildcheckBox.Location = new System.Drawing.Point(12, 319);
+            this.selectChildcheckBox.Name = "selectChildcheckBox";
+            this.selectChildcheckBox.Size = new System.Drawing.Size(82, 17);
+            this.selectChildcheckBox.TabIndex = 35;
+            this.selectChildcheckBox.Text = "Select Child";
+            this.selectChildcheckBox.UseVisualStyleBackColor = true;
+            // 
             // MindmapForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1232, 598);
+            this.Controls.Add(this.selectChildcheckBox);
+            this.Controls.Add(this.childDownButton);
+            this.Controls.Add(this.childUpButton);
             this.Controls.Add(this.pasteNodeButton);
             this.Controls.Add(this.copyNodeButton);
             this.Controls.Add(this.createFromSelectedNodeCheckBox);
@@ -422,6 +458,9 @@
         private System.Windows.Forms.CheckBox createFromSelectedNodeCheckBox;
         private System.Windows.Forms.Button copyNodeButton;
         private System.Windows.Forms.Button pasteNodeButton;
+        private System.Windows.Forms.Button childUpButton;
+        private System.Windows.Forms.Button childDownButton;
+        private System.Windows.Forms.CheckBox selectChildcheckBox;
     }
 }
 

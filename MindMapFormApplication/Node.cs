@@ -32,6 +32,20 @@ namespace LatexTiksMindMapTool
 
             return root;
         }
+        public void switchChildOrder(int childIndex, int childIndex2)
+        {
+            childIndex = (children.Count + childIndex) % children.Count;
+            childIndex2 = (children.Count + childIndex2) % children.Count;
+            Node temp = children[childIndex];
+            children[childIndex] = children[childIndex2];
+            children[childIndex2] = temp;
+        }
+        public Node createParentNode()
+        {
+            Node parent = new Node("black", 15, false, "newParent");
+            parent.addChild(this);
+            return parent;
+        }
         public Node deepCopy()
         {
             return new Node(this);

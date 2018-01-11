@@ -17,6 +17,7 @@ namespace LatexTiksMindMapTool
         private Stack<Node> previous;
         private Stack<int> previousIndex;
         private Node current;
+        private int childrenListBoxSelectedIndexBefore;
         private bool switchOutputPdf;
         private bool enableSubmitting= true;
         private readonly string workingDirectory = System.IO.Directory.GetCurrentDirectory() +"\\";
@@ -30,6 +31,7 @@ namespace LatexTiksMindMapTool
         public MindmapForm()
         {
             InitializeComponent();
+            childrenListBoxSelectedIndexBefore = -1;
             webBrowser.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right | AnchorStyles.Left | AnchorStyles.Top);
             copy = null;
             loadFileNames();
@@ -100,9 +102,14 @@ namespace LatexTiksMindMapTool
         private void backToParentButton_Click(object sender, EventArgs e)
         {
             if (previous.Count < 1)
+            {
+                root = root.createParentNode();
+                previous.Push(root);
+                previousIndex.Push(0);
                 return;
+            }
             current = previous.Pop();
-            previousIndex.Pop();
+            previousIndex.Pop(); 
             loadCurrentNode();
         }
 
@@ -180,7 +187,7 @@ namespace LatexTiksMindMapTool
 
         private void childrenListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (childrenListBox.SelectedIndex == -1)
+            if (childrenListBox.SelectedIndex == -1 || selectChildcheckBox.Checked)
                 return;
             previous.Push(current);
             previousIndex.Push(childrenListBox.SelectedIndex);
@@ -190,10 +197,21 @@ namespace LatexTiksMindMapTool
 
         private void deleteChildButton_Click(object sender, EventArgs e)
         {
-            if (previousIndex.Count==0)
-                return;
-            current = previous.Pop();
-            current.removeChild(previousIndex.Pop());
+            if (previousIndex.Count == 0)
+            {
+                if (childrenListBox.Items.Count > 1)
+                {
+                    MessageBox.Show("Not Possible");
+                    return;
+                }
+                root = root.getChild(0);
+                current = root;
+            }
+            else
+            {
+                current = previous.Pop();
+                current.removeChild(previousIndex.Pop());
+            }
             loadCurrentNode();
         }
 
@@ -277,6 +295,28 @@ namespace LatexTiksMindMapTool
         {
             current.addChild(copy.deepCopy());
             loadCurrentNode();
+        }
+
+        private void childUpButton_Click(object sender, EventArgs e)
+        {
+            shiftChild(true);
+            //childrenListBox.SelectedIndex = (childrenListBox.Items.Count+(childrenListBox.SelectedIndex - 1)) % childrenListBox.Items.Count;
+        }
+
+        private void childDownButton_Click(object sender, EventArgs e)
+        {
+            shiftChild(false);
+            //childrenListBox.SelectedIndex = (childrenListBox.SelectedIndex + 1) % childrenListBox.Items.Count;
+        }
+        private void shiftChild(bool up)
+        {
+            int direction = up ? -1 : 1;
+            if (childrenListBox.SelectedIndex < 0)
+                return;
+            current.switchChildOrder(childrenListBox.SelectedIndex, childrenListBox.SelectedIndex + direction);
+            int nextIndex = (childrenListBox.Items.Count + (childrenListBox.SelectedIndex + direction)) % childrenListBox.Items.Count;
+            loadCurrentNode();
+            childrenListBox.SelectedIndex = nextIndex;
         }
     }
 }
