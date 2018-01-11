@@ -13,6 +13,7 @@ namespace LatexTiksMindMapTool
     public partial class MindmapForm : Form
     {
         private Node root;
+        private Node copy;
         private Stack<Node> previous;
         private Stack<int> previousIndex;
         private Node current;
@@ -30,6 +31,7 @@ namespace LatexTiksMindMapTool
         {
             InitializeComponent();
             webBrowser.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right | AnchorStyles.Left | AnchorStyles.Top);
+            copy = null;
             loadFileNames();
             loadFile("mindmap",pathTemp);            
         }
@@ -118,12 +120,13 @@ namespace LatexTiksMindMapTool
                 current.setSiblingAngleChildren(Convert.ToInt16(siblingAngleChildrenNumericUpDown.Value));
             }
         }
-        private void createLatexCode(string fileName, string path)
+        private void createLatexCode(string fileName, string path, bool createFromRootNode = true)
         {
+            Node startNode = createFromRootNode ? root : current;
             string code = header +
-                "\\path[mindmap, concept color =" + root.getColor() +
-                ", text =" + (root.getColor() == "white" ? "black" : "white") + "]\n" +
-                root.Node2LatexCode() +
+                "\\path[mindmap, concept color =" + startNode.getColor() +
+                ", text =" + (startNode.getColor() == "white" ? "black" : "white") + "]\n" +
+                startNode.Node2LatexCode() +
                 ";\n" +
                 "\\end{tikzpicture}\\end{document};";
             string pathName = path +fileName  + ".tex";
@@ -132,7 +135,7 @@ namespace LatexTiksMindMapTool
         private void createLatexCodeButton_Click(object sender, EventArgs e)
         {
             string fileName = "mindmap" + ((switchOutputPdf) ? "_" : "");
-            createLatexCode(fileName, pathTemp);
+            createLatexCode(fileName, pathTemp, !createFromSelectedNodeCheckBox.Checked);
             var p= new System.Diagnostics.Process();
             p.EnableRaisingEvents = true;
             p.StartInfo.UseShellExecute = false;
@@ -231,14 +234,6 @@ namespace LatexTiksMindMapTool
             siblingAngleChildrenNumericUpDown.Value = siblingAngleChildrenTrackBar.Value;
         }
 
-        private void filesListBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if(filesListBox.SelectedIndex < 0)
-            {  
-                return;
-            }
-            loadFile(filesListBox.SelectedItem.ToString(), workingDirectory);
-        }
 
         private void newFileButton_Click(object sender, EventArgs e)
         {
@@ -261,6 +256,27 @@ namespace LatexTiksMindMapTool
             }
             System.IO.File.Delete(workingDirectory + filesListBox.SelectedItem.ToString() + ".tex");
             loadFileNames();
+        }
+
+        private void loadButton_Click(object sender, EventArgs e)
+        {
+            if (filesListBox.SelectedIndex < 0)
+            {
+                return;
+            }
+            loadFile(filesListBox.SelectedItem.ToString(), workingDirectory);
+        }
+
+        private void copyNodeButton_Click(object sender, EventArgs e)
+        {
+            copy = current.deepCopy();
+            pasteNodeButton.Visible = true;
+        }
+
+        private void pasteNodeButton_Click(object sender, EventArgs e)
+        {
+            current.addChild(copy.deepCopy());
+            loadCurrentNode();
         }
     }
 }

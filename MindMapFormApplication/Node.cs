@@ -32,6 +32,25 @@ namespace LatexTiksMindMapTool
 
             return root;
         }
+        public Node deepCopy()
+        {
+            return new Node(this);
+        }
+        private Node(Node toCopy)
+        {
+            this.children = new List<Node>();
+            this.content = toCopy.content;
+            this.color = toCopy.color;
+            this.clockWise = toCopy.clockWise;
+            this.startAngle = toCopy.startAngle;
+            this.levelDistanceEnabled = toCopy.levelDistanceEnabled;
+            this.levelDistance = toCopy.levelDistance;
+            this.siblingAngleChildren = toCopy.siblingAngleChildren;
+            foreach(var child in toCopy.children)
+            {
+                this.children.Add(new Node(child));
+            }
+        }
         private Node(string color = "", double levelDistance = 15 , bool levelDistanceEnabled = false, string content = "")
         {
             children = new List<Node>();
@@ -46,6 +65,10 @@ namespace LatexTiksMindMapTool
         public void addChild(string content = "", string color = "")
         {
             children.Add(new Node(color, 15,false,content));
+        }
+        public void addChild(Node child)
+        {
+            children.Add(child);
         }
         public string [] getChildren()
         {

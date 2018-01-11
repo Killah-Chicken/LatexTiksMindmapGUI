@@ -5,16 +5,48 @@
 \begin{document}
 \pagestyle{empty}
 \begin{tikzpicture}
-\path[mindmap, concept color =black, text =white]
+\path[mindmap, concept color =red, text =white]
 node[concept] {VDL}
+[clockwise from = 0]
+child[concept color=blue, level distance = 55.37em,sibling angle=60] {
+node[concept] {Node Nr1}
 [clockwise from = 0]
 child[concept color=blue,sibling angle=60] {
 node[concept] {Node Nr1}
 [clockwise from = 0]
 }
+child[concept color=blue,sibling angle=60] {
+node[concept] {Node Nr2}
+[clockwise from = 0]
+}
+}
 child[concept color=red,sibling angle=60] {
 node[concept] {Node Nr2}
 [clockwise from = 0]
+}
+child[concept color=blue, level distance = 55.37em,sibling angle=60] {
+node[concept] {Node Nr1}
+[clockwise from = 0]
+child[concept color=blue,sibling angle=60] {
+node[concept] {Node Nr1}
+[clockwise from = 0]
+}
+child[concept color=blue,sibling angle=60] {
+node[concept] {Node Nr2}
+[clockwise from = 0]
+}
+}
+child[concept color=blue, level distance = 55.37em,sibling angle=60] {
+node[concept] {textChanged}
+[clockwise from = 0]
+child[concept color=blue,sibling angle=60] {
+node[concept] {Node Nr1}
+[clockwise from = 0]
+}
+child[concept color=blue,sibling angle=60] {
+node[concept] {Node Nr2}
+[clockwise from = 0]
+}
 }
 ;
 \end{tikzpicture}\end{document};

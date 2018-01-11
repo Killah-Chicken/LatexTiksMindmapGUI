@@ -53,6 +53,10 @@
             this.filesListBox = new System.Windows.Forms.ListBox();
             this.newFileButton = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
+            this.loadButton = new System.Windows.Forms.Button();
+            this.createFromSelectedNodeCheckBox = new System.Windows.Forms.CheckBox();
+            this.copyNodeButton = new System.Windows.Forms.Button();
+            this.pasteNodeButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.startAngleNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.levelDistanceTrackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.levelDistanceNumericUpDown)).BeginInit();
@@ -109,7 +113,7 @@
             // 
             // createLatexCodeButton
             // 
-            this.createLatexCodeButton.Location = new System.Drawing.Point(174, 269);
+            this.createLatexCodeButton.Location = new System.Drawing.Point(174, 315);
             this.createLatexCodeButton.Name = "createLatexCodeButton";
             this.createLatexCodeButton.Size = new System.Drawing.Size(83, 34);
             this.createLatexCodeButton.TabIndex = 8;
@@ -120,7 +124,7 @@
             // clockWiseCheckBox
             // 
             this.clockWiseCheckBox.AutoSize = true;
-            this.clockWiseCheckBox.Location = new System.Drawing.Point(174, 98);
+            this.clockWiseCheckBox.Location = new System.Drawing.Point(729, 98);
             this.clockWiseCheckBox.Name = "clockWiseCheckBox";
             this.clockWiseCheckBox.Size = new System.Drawing.Size(115, 17);
             this.clockWiseCheckBox.TabIndex = 10;
@@ -246,7 +250,7 @@
             // 
             // deleteNodeButton
             // 
-            this.deleteNodeButton.Location = new System.Drawing.Point(174, 51);
+            this.deleteNodeButton.Location = new System.Drawing.Point(174, 84);
             this.deleteNodeButton.Name = "deleteNodeButton";
             this.deleteNodeButton.Size = new System.Drawing.Size(83, 34);
             this.deleteNodeButton.TabIndex = 23;
@@ -279,7 +283,6 @@
             this.filesListBox.Name = "filesListBox";
             this.filesListBox.Size = new System.Drawing.Size(148, 69);
             this.filesListBox.TabIndex = 26;
-            this.filesListBox.SelectedIndexChanged += new System.EventHandler(this.filesListBox_SelectedIndexChanged);
             // 
             // newFileButton
             // 
@@ -293,7 +296,7 @@
             // 
             // deleteButton
             // 
-            this.deleteButton.Location = new System.Drawing.Point(378, 27);
+            this.deleteButton.Location = new System.Drawing.Point(378, 126);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(53, 23);
             this.deleteButton.TabIndex = 28;
@@ -301,11 +304,56 @@
             this.deleteButton.UseVisualStyleBackColor = true;
             this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
+            // loadButton
+            // 
+            this.loadButton.Location = new System.Drawing.Point(378, 27);
+            this.loadButton.Name = "loadButton";
+            this.loadButton.Size = new System.Drawing.Size(41, 23);
+            this.loadButton.TabIndex = 29;
+            this.loadButton.Text = "load";
+            this.loadButton.UseVisualStyleBackColor = true;
+            this.loadButton.Click += new System.EventHandler(this.loadButton_Click);
+            // 
+            // createFromSelectedNodeCheckBox
+            // 
+            this.createFromSelectedNodeCheckBox.AutoSize = true;
+            this.createFromSelectedNodeCheckBox.Location = new System.Drawing.Point(174, 279);
+            this.createFromSelectedNodeCheckBox.Name = "createFromSelectedNodeCheckBox";
+            this.createFromSelectedNodeCheckBox.Size = new System.Drawing.Size(95, 30);
+            this.createFromSelectedNodeCheckBox.TabIndex = 30;
+            this.createFromSelectedNodeCheckBox.Text = "Create from \r\nselected Node";
+            this.createFromSelectedNodeCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // copyNodeButton
+            // 
+            this.copyNodeButton.Location = new System.Drawing.Point(174, 49);
+            this.copyNodeButton.Name = "copyNodeButton";
+            this.copyNodeButton.Size = new System.Drawing.Size(83, 34);
+            this.copyNodeButton.TabIndex = 31;
+            this.copyNodeButton.Text = "Copy Node";
+            this.copyNodeButton.UseVisualStyleBackColor = true;
+            this.copyNodeButton.Click += new System.EventHandler(this.copyNodeButton_Click);
+            // 
+            // pasteNodeButton
+            // 
+            this.pasteNodeButton.Location = new System.Drawing.Point(174, 222);
+            this.pasteNodeButton.Name = "pasteNodeButton";
+            this.pasteNodeButton.Size = new System.Drawing.Size(83, 34);
+            this.pasteNodeButton.TabIndex = 32;
+            this.pasteNodeButton.Text = "Paste Copy as Children";
+            this.pasteNodeButton.UseVisualStyleBackColor = true;
+            this.pasteNodeButton.Visible = false;
+            this.pasteNodeButton.Click += new System.EventHandler(this.pasteNodeButton_Click);
+            // 
             // MindmapForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1232, 598);
+            this.Controls.Add(this.pasteNodeButton);
+            this.Controls.Add(this.copyNodeButton);
+            this.Controls.Add(this.createFromSelectedNodeCheckBox);
+            this.Controls.Add(this.loadButton);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.newFileButton);
             this.Controls.Add(this.filesListBox);
@@ -370,6 +418,10 @@
         private System.Windows.Forms.ListBox filesListBox;
         private System.Windows.Forms.Button newFileButton;
         private System.Windows.Forms.Button deleteButton;
+        private System.Windows.Forms.Button loadButton;
+        private System.Windows.Forms.CheckBox createFromSelectedNodeCheckBox;
+        private System.Windows.Forms.Button copyNodeButton;
+        private System.Windows.Forms.Button pasteNodeButton;
     }
 }
 
