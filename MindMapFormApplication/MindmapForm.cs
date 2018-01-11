@@ -34,6 +34,7 @@ namespace LatexTiksMindMapTool
         }
         private void loadFileNames()
         {
+            filesListBox.Items.Clear();
             var files = System.IO.Directory.GetFiles(workingDirectory);
             for (var i = 0; i < files.Length; i++)
             {
@@ -45,7 +46,6 @@ namespace LatexTiksMindMapTool
         }
         private void loadFile(string file, string filePath)
         {
-            switchOutputPdf = false;
             string code = System.IO.File.ReadAllText(filePath + file + ".tex");
             code = code.Substring(code.IndexOf("concept color"));
             int startIndex = code.IndexOf("=") + 1;
@@ -68,7 +68,7 @@ namespace LatexTiksMindMapTool
                 root.Node2LatexCode() +
                 ";\n" +
                 "\\end{tikzpicture}\\end{document};";
-            string fileName = workingDirectory + "mindmap.tex";
+            string fileName = workingDirectory + "mindmap_lastVersion.tex";
             System.IO.File.WriteAllText(fileName, code);
 
         }
@@ -117,22 +117,25 @@ namespace LatexTiksMindMapTool
                 current.setSiblingAngleChildren(Convert.ToInt16(siblingAngleChildrenNumericUpDown.Value));
             }
         }
-
-        private void createLatexCodeButton_Click(object sender, EventArgs e)
+        private void createLatexCode(string fileName, string path)
         {
-            //webBrowser.Navigate("http://localhost/");
             string code = header +
                 "\\path[mindmap, concept color =" + root.getColor() +
                 ", text =" + (root.getColor() == "white" ? "black" : "white") + "]\n" +
-                root.Node2LatexCode() + 
+                root.Node2LatexCode() +
                 ";\n" +
                 "\\end{tikzpicture}\\end{document};";
-            string fileName = pathTemp + "mindmap" + ((switchOutputPdf) ? "_":"") +".tex";
-            System.IO.File.WriteAllText(fileName, code);
+            string pathName = path +fileName  + ".tex";
+            System.IO.File.WriteAllText(pathName, code);
+        }
+        private void createLatexCodeButton_Click(object sender, EventArgs e)
+        {
+            string fileName = "mindmap" + ((switchOutputPdf) ? "_" : "");
+            createLatexCode(fileName, pathTemp);
             var p= new System.Diagnostics.Process();
             p.EnableRaisingEvents = true;
             p.StartInfo.UseShellExecute = false;
-            p.StartInfo.Arguments = "-synctex=1 -aux-directory=" + pathTemp + " -interaction=nonstopmode " + fileName;
+            p.StartInfo.Arguments = "-synctex=1 -aux-directory=" + pathTemp + " -interaction=nonstopmode " + pathTemp + fileName + ".tex";
             p.StartInfo.CreateNoWindow = true;
             p.StartInfo.FileName = "pdflatex.exe";
             p.Start();
@@ -164,7 +167,11 @@ namespace LatexTiksMindMapTool
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            System.IO.File.Copy(pathTemp + "mindmap.tex", System.IO.Directory.GetCurrentDirectory() + "\\mindmap_save.tex");
+            if(filesListBox.SelectedIndex < 0)
+            {
+                return;
+            }
+            createLatexCode(filesListBox.SelectedItem.ToString() , workingDirectory);
         }
 
         private void childrenListBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -230,6 +237,29 @@ namespace LatexTiksMindMapTool
                 return;
             }
             loadFile(filesListBox.SelectedItem.ToString(), workingDirectory);
+        }
+
+        private void newFileButton_Click(object sender, EventArgs e)
+        {
+            int i = 1;
+            string fileName = "mindmap" + i;
+            while (filesListBox.Items.Contains(fileName))
+            {
+                i++;
+                fileName = "mindmap" + i;
+            }
+            createLatexCode(fileName, workingDirectory);
+            loadFileNames();
+        }
+
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            if(filesListBox.SelectedIndex < 0)
+            {
+                return;
+            }
+            System.IO.File.Delete(workingDirectory + filesListBox.SelectedItem.ToString() + ".tex");
+            loadFileNames();
         }
     }
 }

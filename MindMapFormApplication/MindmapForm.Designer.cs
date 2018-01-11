@@ -51,6 +51,8 @@
             this.startAngleTrackBar = new System.Windows.Forms.TrackBar();
             this.siblingAngleChildrenTrackBar = new System.Windows.Forms.TrackBar();
             this.filesListBox = new System.Windows.Forms.ListBox();
+            this.newFileButton = new System.Windows.Forms.Button();
+            this.deleteButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.startAngleNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.levelDistanceTrackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.levelDistanceNumericUpDown)).BeginInit();
@@ -234,9 +236,9 @@
             // 
             // saveButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(12, 269);
+            this.saveButton.Location = new System.Drawing.Point(331, 27);
             this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(83, 34);
+            this.saveButton.Size = new System.Drawing.Size(41, 23);
             this.saveButton.TabIndex = 22;
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = true;
@@ -279,11 +281,33 @@
             this.filesListBox.TabIndex = 26;
             this.filesListBox.SelectedIndexChanged += new System.EventHandler(this.filesListBox_SelectedIndexChanged);
             // 
+            // newFileButton
+            // 
+            this.newFileButton.Location = new System.Drawing.Point(283, 27);
+            this.newFileButton.Name = "newFileButton";
+            this.newFileButton.Size = new System.Drawing.Size(42, 23);
+            this.newFileButton.TabIndex = 27;
+            this.newFileButton.Text = "New";
+            this.newFileButton.UseVisualStyleBackColor = true;
+            this.newFileButton.Click += new System.EventHandler(this.newFileButton_Click);
+            // 
+            // deleteButton
+            // 
+            this.deleteButton.Location = new System.Drawing.Point(378, 27);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(53, 23);
+            this.deleteButton.TabIndex = 28;
+            this.deleteButton.Text = "Delete";
+            this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
+            // 
             // MindmapForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1232, 598);
+            this.Controls.Add(this.deleteButton);
+            this.Controls.Add(this.newFileButton);
             this.Controls.Add(this.filesListBox);
             this.Controls.Add(this.siblingAngleChildrenTrackBar);
             this.Controls.Add(this.startAngleTrackBar);
@@ -344,6 +368,8 @@
         private System.Windows.Forms.TrackBar startAngleTrackBar;
         private System.Windows.Forms.TrackBar siblingAngleChildrenTrackBar;
         private System.Windows.Forms.ListBox filesListBox;
+        private System.Windows.Forms.Button newFileButton;
+        private System.Windows.Forms.Button deleteButton;
     }
 }
 
