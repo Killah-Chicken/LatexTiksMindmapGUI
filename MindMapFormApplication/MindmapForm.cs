@@ -29,6 +29,7 @@ namespace LatexTiksMindMapTool
         public MindmapForm()
         {
             InitializeComponent();
+            webBrowser.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right | AnchorStyles.Left | AnchorStyles.Top);
             loadFileNames();
             loadFile("mindmap",pathTemp);            
         }
