@@ -200,9 +200,12 @@ namespace LatexTiksMindMapTool
             {
                 return;
             }
-            current = previous.Pop();
-            current.removeChild(previousIndex.Pop());
-            loadCurrentNode();
+            if (askForDeleteIfMoreThanOneNode(current.countSubNodes()))
+            {
+                current = previous.Pop();
+                current.removeChild(previousIndex.Pop());
+                loadCurrentNode();
+            }
         }
 
         private void contentTextBox_TextChanged(object sender, EventArgs e)
@@ -322,17 +325,21 @@ namespace LatexTiksMindMapTool
                 return;
             }
             int nodesToDelete = root.countSubNodes() - current.countSubNodes();
-            var dR = DialogResult.OK;  
-            if (nodesToDelete > 1)
-            {
-                dR = MessageBox.Show("Seriously? You are about to delete " + nodesToDelete + " fucking nodes with this action", "Deleting " + nodesToDelete + " nodes...", MessageBoxButtons.OKCancel);
-            }
-            if(dR == DialogResult.OK)
+            if (askForDeleteIfMoreThanOneNode(nodesToDelete))
             {
                 root = current;
                 previous = new Stack<Node>();
                 previousIndex = new Stack<int>();
             }
+        }
+        private bool askForDeleteIfMoreThanOneNode(int nodesToDelete)
+        {
+            var dR = DialogResult.OK;
+            if (nodesToDelete > 1)
+            {
+                dR = MessageBox.Show("Seriously? You are about to delete " + nodesToDelete + " fucking nodes with this action!!!", "Deleting " + nodesToDelete + " nodes...", MessageBoxButtons.OKCancel);
+            }
+            return (dR == DialogResult.OK);
         }
     }
 }

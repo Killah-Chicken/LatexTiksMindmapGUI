@@ -5,24 +5,16 @@
 \begin{document}
 \pagestyle{empty}
 \begin{tikzpicture}
-\path[mindmap, concept color =blue, text =white]
-node[concept] {OUT}
-[clockwise from = 98]
-child[concept color=red,sibling angle=36] {
-node[concept] {Komponente kann nicht lesen}
-[clockwise from = 100]
+\path[mindmap, concept color =red, text =white]
+node[concept] {VDL}
+[clockwise from = 0]
+child[concept color=red,sibling angle=60] {
+node[concept] {Node Nr2}
+[clockwise from = 0]
 }
-child[concept color=blue,sibling angle=36] {
-node[concept] {Komponente kann schreiben}
-[clockwise from = 100]
-}
-child[concept color=red,sibling angle=36] {
-node[concept] {Port von aussen nicht veraenderbar}
-[clockwise from = 100]
-}
-child[concept color=blue,sibling angle=36] {
-node[concept] {Port von innen veraenderbar}
-[clockwise from = 100]
+child[concept color=blue, level distance = 55.37em,sibling angle=60] {
+node[concept] {Node Nr1}
+[clockwise from = 0]
 }
 ;
 \end{tikzpicture}\end{document};
