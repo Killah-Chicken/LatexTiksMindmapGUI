@@ -248,12 +248,13 @@ namespace LatexTiksMindMapTool
 
         private void newFileButton_Click(object sender, EventArgs e)
         {
-            int i = 1;
-            string fileName = "mindmap" + i;
+            //int i = 1;
+            string fileName = newNameTextBox.Text;//"mindmap" + i;
             while (filesListBox.Items.Contains(fileName))
             {
-                i++;
-                fileName = "mindmap" + i;
+                return;
+                //i++;
+                //fileName = "mindmap" + i;
             }
             createLatexCode(fileName, workingDirectory);
             loadFileNames();
@@ -340,6 +341,34 @@ namespace LatexTiksMindMapTool
                 dR = MessageBox.Show("Seriously? You are about to delete " + nodesToDelete + " fucking nodes with this action!!!", "Deleting " + nodesToDelete + " nodes...", MessageBoxButtons.OKCancel);
             }
             return (dR == DialogResult.OK);
+        }
+
+        private void renameButton_Click(object sender, EventArgs e)
+        {
+            var newName = newNameTextBox.Text;
+            if (newName.Contains('\\') ||
+                newName.Contains('/') ||
+                newName.Contains(':') ||
+                newName.Contains('*') ||
+                newName.Contains('?') ||
+                newName.Contains('"') ||
+                newName.Contains('<') ||
+                newName.Contains('>') ||
+                newName.Contains('|'))
+            {
+                /*if(*/
+                MessageBox.Show("Filename shall not contain: \\/:*?\"<>|", "Invalid Name");//, MessageBoxButtons.OKCancel) == DialogResult.Cancel)
+                return;
+            }
+            if(filesListBox.Items.Contains(newName))
+            {
+                MessageBox.Show("Choose another filename!", "FileName allready exists");//, MessageBoxButtons.OKCancel) == DialogResult.Cancel)
+                return;
+            }
+            string oldName = filesListBox.SelectedItem.ToString();
+            System.IO.File.Create(workingDirectory  + newName + ".tex");
+            System.IO.File.Replace(workingDirectory + oldName + ".tex", workingDirectory + newName + ".tex", pathTemp+newName+"_bu.tex");
+            loadFileNames();
         }
     }
 }

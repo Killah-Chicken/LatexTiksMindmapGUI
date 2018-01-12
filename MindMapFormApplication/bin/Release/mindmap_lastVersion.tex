@@ -5,16 +5,113 @@
 \begin{document}
 \pagestyle{empty}
 \begin{tikzpicture}
-\path[mindmap, concept color =red, text =white]
-node[concept] {VDL}
+\path[mindmap, concept color =black, text =white]
+node[concept] {VHDL}
 [clockwise from = 0]
-child[concept color=red,sibling angle=60] {
-node[concept] {Node Nr2}
+child[concept color=red!70, level distance = 31.4em,sibling angle=68] {
+node[concept] {Zeittafel}
+[clockwise from = 0]
+child[concept color=red!70,sibling angle=60] {
+node[concept] {1983}
+[clockwise from = 90]
+child[concept color=red!70,sibling angle=90] {
+node[concept] {VHDL 7.2}
 [clockwise from = 0]
 }
-child[concept color=blue, level distance = 55.37em,sibling angle=60] {
-node[concept] {Node Nr1}
+child[concept color=red!70,sibling angle=90] {
+node[concept] {1987}
+[clockwise from = 90]
+child[concept color=red!70, level distance = 7em,sibling angle=90] {
+node[concept] {Standardisierung von IEEE
+als Standard 1076 (VHDL-87)}
+[clockwise from = 90]
+}
+child[concept color=red!70,sibling angle=90] {
+node[concept] {1993}
+[clockwise from = 90]
+child[concept color=red!70,sibling angle=90] {
+node[concept] {Ueberarbeitung durch IEEE (VHDL-93)}
 [clockwise from = 0]
+}
+child[concept color=red!70,sibling angle=90] {
+node[concept] {2000}
+[clockwise from = 90]
+child[concept color=red!70,sibling angle=90] {
+node[concept] {Weitere Ueberarbeitungen}
+[clockwise from = 0]
+}
+child[concept color=red!70,sibling angle=90] {
+node[concept] {2003}
+[clockwise from = 90]
+child[concept color=red!70,sibling angle=60] {
+node[concept] {Erweiterung des Standards}
+[counterclockwise from = 0]
+child[concept color=blue,sibling angle=60] {
+node[concept] {Modellierung rekonfigurierbarer Logik}
+[clockwise from = 0]
+}
+child[concept color=blue, level distance = 7em,sibling angle=60] {
+node[concept] {Integration von Aspekten der formalen Vertifikation}
+[clockwise from = 0]
+}
+}
+}
+}
+}
+}
+}
+}
+child[concept color=orange,sibling angle=68] {
+node[concept] {Allgemeine Eigenschaften}
+[clockwise from = 0]
+child[concept color=orange,sibling angle=60] {
+node[concept] {Jede gueltige VHDL}
+[clockwise from = 0]
+child[concept color=green,sibling angle=60] {
+node[concept] {simulier-\\bar}
+[clockwise from = 0]
+}
+child[concept color=yellow,sibling angle=60] {
+node[concept] {nicht unbedingt synthetisierbar}
+[clockwise from = 0]
+}
+}
+child[concept color=red, level distance = 10.74em,sibling angle=60] {
+node[concept] {Besonders bzgl. Zeitverhalten starke Abweichungen moeglich}
+[clockwise from = 0]
+}
+}
+child[concept color=blue,sibling angle=68] {
+node[concept] {Trivia}
+[counterclockwise from = 0]
+child[concept color=blue,sibling angle=60] {
+node[concept] {Abk. für \underline{V}HSIC-HDL}
+[clockwise from = 0]
+child[concept color=blue,sibling angle=60] {
+node[concept] {\underline{VHSIC} Very High Speed Integrated Circuits}
+[clockwise from = 0]
+}
+child[concept color=blue,sibling angle=60] {
+node[concept] {\underline{HDL}: Hardware Description Language}
+[clockwise from = 0]
+}
+}
+child[concept color=blue!90,sibling angle=60] {
+node[concept] {Ziel der Entwicklung}
+[clockwise from = 180]
+child[concept color=blue!90,sibling angle=60] {
+node[concept] {Unabhaengigkeit von verwendeter Technologie und Entwurfmethodik}
+[clockwise from = 0]
+}
+child[concept color=blue!70, level distance = 17.36em,sibling angle=60] {
+node[concept] {Beschreibung von Schaltungen auf versch. Abstraktionsebenen unter Verwendung versch. Sichtweisen}
+[clockwise from = 0]
+}
+child[concept color=blue!90,sibling angle=60] {
+node[concept] {Validierung mittels einzigen Simulator}
+[clockwise from = 0]
+}
+}
 }
 ;
 \end{tikzpicture}\end{document};

@@ -61,6 +61,8 @@
             this.childDownButton = new System.Windows.Forms.Button();
             this.selectChildcheckBox = new System.Windows.Forms.CheckBox();
             this.currentToRootButton = new System.Windows.Forms.Button();
+            this.renameButton = new System.Windows.Forms.Button();
+            this.newNameTextBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.startAngleNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.levelDistanceTrackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.levelDistanceNumericUpDown)).BeginInit();
@@ -300,7 +302,7 @@
             // 
             // deleteButton
             // 
-            this.deleteButton.Location = new System.Drawing.Point(378, 126);
+            this.deleteButton.Location = new System.Drawing.Point(283, 126);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(53, 23);
             this.deleteButton.TabIndex = 28;
@@ -392,11 +394,31 @@
             this.currentToRootButton.UseVisualStyleBackColor = true;
             this.currentToRootButton.Click += new System.EventHandler(this.currentToRootButton_Click);
             // 
+            // renameButton
+            // 
+            this.renameButton.Location = new System.Drawing.Point(342, 126);
+            this.renameButton.Name = "renameButton";
+            this.renameButton.Size = new System.Drawing.Size(89, 23);
+            this.renameButton.TabIndex = 37;
+            this.renameButton.Text = "Rename";
+            this.renameButton.UseVisualStyleBackColor = true;
+            this.renameButton.Visible = false;
+            this.renameButton.Click += new System.EventHandler(this.renameButton_Click);
+            // 
+            // newNameTextBox
+            // 
+            this.newNameTextBox.Location = new System.Drawing.Point(437, 128);
+            this.newNameTextBox.Name = "newNameTextBox";
+            this.newNameTextBox.Size = new System.Drawing.Size(148, 20);
+            this.newNameTextBox.TabIndex = 38;
+            // 
             // MindmapForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1232, 598);
+            this.Controls.Add(this.newNameTextBox);
+            this.Controls.Add(this.renameButton);
             this.Controls.Add(this.currentToRootButton);
             this.Controls.Add(this.selectChildcheckBox);
             this.Controls.Add(this.childDownButton);
@@ -477,6 +499,8 @@
         private System.Windows.Forms.Button childDownButton;
         private System.Windows.Forms.CheckBox selectChildcheckBox;
         private System.Windows.Forms.Button currentToRootButton;
+        private System.Windows.Forms.Button renameButton;
+        private System.Windows.Forms.TextBox newNameTextBox;
     }
 }
 
