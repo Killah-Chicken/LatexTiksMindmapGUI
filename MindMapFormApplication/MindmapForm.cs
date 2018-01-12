@@ -14,6 +14,7 @@ namespace LatexTiksMindMapTool
     {
         private Node root;
         private Node copy;
+        private Node tempRoot;
         private Stack<Node> previous;
         private Stack<int> previousIndex;
         private Node current;
@@ -33,7 +34,8 @@ namespace LatexTiksMindMapTool
             webBrowser.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right | AnchorStyles.Left | AnchorStyles.Top);
             copy = null;
             loadFileNames();
-            loadFile("mindmap",pathTemp);            
+            loadFile("mindmap",pathTemp);
+            tempRoot = root;         
         }
         private void loadFileNames()
         {
@@ -128,7 +130,7 @@ namespace LatexTiksMindMapTool
         }
         private void createLatexCode(string fileName, string path, bool createFromRootNode = true)
         {
-            Node startNode = createFromRootNode ? root : current;
+            Node startNode = createFromRootNode ? (tempRootCheckBox.Checked?tempRoot:root) : current;
             string code = header +
                 "\\path[mindmap, concept color =" + startNode.getColor() +
                 ", text =" + (startNode.getColor() == "white" ? "black" : "white") + "]\n" +
@@ -323,6 +325,11 @@ namespace LatexTiksMindMapTool
         {
             if(current == root)
             {
+                return;
+            }
+            if(tempRootCheckBox.Checked)
+            {
+                tempRoot = current;
                 return;
             }
             int nodesToDelete = root.countSubNodes() - current.countSubNodes();

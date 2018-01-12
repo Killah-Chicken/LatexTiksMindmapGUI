@@ -63,6 +63,7 @@
             this.currentToRootButton = new System.Windows.Forms.Button();
             this.renameButton = new System.Windows.Forms.Button();
             this.newNameTextBox = new System.Windows.Forms.TextBox();
+            this.tempRootCheckBox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.startAngleNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.levelDistanceTrackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.levelDistanceNumericUpDown)).BeginInit();
@@ -412,11 +413,22 @@
             this.newNameTextBox.Size = new System.Drawing.Size(148, 20);
             this.newNameTextBox.TabIndex = 38;
             // 
+            // tempRootCheckBox
+            // 
+            this.tempRootCheckBox.AutoSize = true;
+            this.tempRootCheckBox.Location = new System.Drawing.Point(166, 12);
+            this.tempRootCheckBox.Name = "tempRootCheckBox";
+            this.tempRootCheckBox.Size = new System.Drawing.Size(120, 17);
+            this.tempRootCheckBox.TabIndex = 39;
+            this.tempRootCheckBox.Text = "(...to temporary root)";
+            this.tempRootCheckBox.UseVisualStyleBackColor = true;
+            // 
             // MindmapForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1232, 598);
+            this.Controls.Add(this.tempRootCheckBox);
             this.Controls.Add(this.newNameTextBox);
             this.Controls.Add(this.renameButton);
             this.Controls.Add(this.currentToRootButton);
@@ -501,6 +513,7 @@
         private System.Windows.Forms.Button currentToRootButton;
         private System.Windows.Forms.Button renameButton;
         private System.Windows.Forms.TextBox newNameTextBox;
+        private System.Windows.Forms.CheckBox tempRootCheckBox;
     }
 }
 
