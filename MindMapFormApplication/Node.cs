@@ -17,6 +17,8 @@ namespace LatexTiksMindMapTool
         private bool levelDistanceEnabled;
         private double levelDistance;
         private int siblingAngleChildren;
+        private bool textWidthEnabled;
+        private int textWidth;
 
         public static Node recursiveMindmapCreatingFromTexCode(string code, string color,double levelDistance, bool levelDistanceEnabled)
         {
@@ -26,11 +28,20 @@ namespace LatexTiksMindMapTool
             }
 
             Node root = new Node(color,levelDistance,levelDistanceEnabled);
+            code = root.setTextWidthByCode(code);
             code = root.setContentByCode(code);
             code = root.setClockWiseAndStartAngleByCode(code);
             root.setChildrenByCode(code);
 
             return root;
+        }
+        public int getTextWidth()
+        {
+            return textWidth;
+        }
+        public bool getTextWidthEnabled()
+        {
+            return textWidthEnabled;
         }
         public void switchChildOrder(int childIndex, int childIndex2)
         {
@@ -47,7 +58,7 @@ namespace LatexTiksMindMapTool
             {
                 number = (Convert.ToInt16(content.Substring(9)) + 1).ToString();
             }
-            Node parent = new Node("black", 15, false, "newParent" + number);
+            Node parent = new Node("black", 15, false,"newParent" + number);
             parent.addChild(this);
             return parent;
         }
@@ -74,12 +85,14 @@ namespace LatexTiksMindMapTool
             this.levelDistanceEnabled = toCopy.levelDistanceEnabled;
             this.levelDistance = toCopy.levelDistance;
             this.siblingAngleChildren = toCopy.siblingAngleChildren;
+            this.textWidthEnabled = toCopy.textWidthEnabled;
+            this.textWidth = toCopy.textWidth;
             foreach(var child in toCopy.children)
             {
                 this.children.Add(new Node(child));
             }
         }
-        private Node(string color = "", double levelDistance = 15 , bool levelDistanceEnabled = false, string content = "")
+        private Node(string color = "", double levelDistance = 15 , bool levelDistanceEnabled = false, string content = "", int textWidth = 5, bool textWidthEnabled = false)
         {
             children = new List<Node>();
             this.content = content;
@@ -88,6 +101,8 @@ namespace LatexTiksMindMapTool
             this.startAngle = 0;
             this.levelDistanceEnabled = levelDistanceEnabled;
             this.levelDistance = levelDistance;
+            this.textWidthEnabled = textWidthEnabled;
+            this.textWidth = textWidth;
             this.siblingAngleChildren = 60;
         }
         public void addChild(string content = "", string color = "")
@@ -130,6 +145,14 @@ namespace LatexTiksMindMapTool
         {
             children.RemoveAt(index);
 
+        }
+        public void setTextWidth(int textWidth)
+        {
+            this.textWidth = textWidth;
+        }
+        public void setTextWidthEnabled(bool enable)
+        {
+            textWidthEnabled = enable;
         }
         public void setLevelDistanceEnabled(bool enable)
         {
@@ -187,6 +210,23 @@ namespace LatexTiksMindMapTool
         public string getContent()
         {
             return this.content;
+        }
+        private string setTextWidthByCode(string code)
+        {
+            int startIndex = code.IndexOf("text width");
+            int indexOfKlammer = code.IndexOf("]");
+            if (startIndex == -1 || indexOfKlammer < startIndex)
+            {
+                textWidthEnabled = false;
+            }
+            else
+            {
+                startIndex = code.IndexOf("=", startIndex) + 1;
+                int endIndex = code.IndexOf("em", startIndex);
+                textWidth = Convert.ToInt16(code.Substring(startIndex, endIndex-startIndex));
+                textWidthEnabled = true;
+            }
+            return code.Substring(indexOfKlammer + 1);
         }
         private string setContentByCode(string code)
         {
@@ -285,7 +325,7 @@ namespace LatexTiksMindMapTool
         public string Node2LatexCode()
         {
             StringBuilder code = new StringBuilder();
-            code.AppendLine("node[concept] {" + content + "}");
+            code.AppendLine("node[concept"+ (textWidthEnabled?",text width="+textWidth+"em":"") +"] {" + content + "}");
             code.AppendLine("["+ (clockWise ? "":"counter")+"clockwise from = "+startAngle+"]");
             foreach (var c in children)
             {

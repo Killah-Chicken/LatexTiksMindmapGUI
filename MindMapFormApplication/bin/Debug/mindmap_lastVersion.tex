@@ -6,80 +6,117 @@
 \pagestyle{empty}
 \begin{tikzpicture}
 \path[mindmap, concept color =black, text =white]
-node[concept] {VHDL-Elemente}
+node[concept] {VHDL}
 [clockwise from = 0]
 child[concept color=blue,sibling angle=68] {
-node[concept] {Ports}
-[clockwise from = 140]
+node[concept] {Trivia}
+[counterclockwise from = 0]
 child[concept color=blue,sibling angle=60] {
-node[concept] {IN}
+node[concept] {Abk. f{\"u}r \underline{V}HSIC-HDL}
 [clockwise from = 0]
-}
 child[concept color=blue,sibling angle=60] {
-node[concept] {OUT}
-[clockwise from = 0]
-}
-child[concept color=blue,sibling angle=60] {
-node[concept] {INOUT}
+node[concept] {\underline{VHSIC} Very High Speed Integrated Circuits}
 [clockwise from = 0]
 }
 child[concept color=blue,sibling angle=60] {
-node[concept] {BUFFER}
-[clockwise from = 0]
-}
-child[concept color=blue,sibling angle=60] {
-node[concept] {LINKAGE}
+node[concept] {\underline{HDL}: Hardware Description Language}
 [clockwise from = 0]
 }
 }
-child[concept color=black!70,sibling angle=68] {
-node[concept] {Baustein/ Schaltung besteht aus}
-[clockwise from = 306]
-child[concept color=black!70,sibling angle=71] {
-node[concept] {Entity}
-[clockwise from = 62]
-child[concept color=black!70,sibling angle=60] {
-node[concept] {Spezifikation Schnittstelle nach aussen}
+child[concept color=blue!90,sibling angle=60] {
+node[concept] {Ziel der Entwicklung}
+[clockwise from = 180]
+child[concept color=blue!90,sibling angle=60] {
+node[concept] {Unabhaengigkeit von verwendeter Technologie und Entwurfmethodik}
 [clockwise from = 0]
 }
+child[concept color=blue!70, level distance = 17.36em,sibling angle=60] {
+node[concept,text width=10em] {Beschreibung von Schaltungen auf versch. Abstraktionsebenen unter Verwendung versch. Sichtweisen}
+[clockwise from = 0]
+}
+child[concept color=blue!90,sibling angle=60] {
+node[concept] {Validierung mittels einzigen Simulator}
+[clockwise from = 0]
+}
+}
+}
+child[concept color=orange,sibling angle=68] {
+node[concept] {Allgemeine Eigenschaften}
+[clockwise from = 0]
+child[concept color=orange,sibling angle=60] {
+node[concept] {Jede g{\"u}ltige VHDL au{\ss}en}
+[clockwise from = 0]
 child[concept color=green,sibling angle=60] {
-node[concept] {Definition}
-[clockwise from = 0]
-child[concept color=green,sibling angle=60] {
-node[concept] {Angabe der Ports}
+node[concept] {simulier-\\bar}
 [clockwise from = 0]
 }
-child[concept color=green,sibling angle=60] {
-node[concept] {Angabe der Port-Daten-Typen}
+child[concept color=yellow,sibling angle=60] {
+node[concept] {nicht unbedingt synthetisierbar}
 [clockwise from = 0]
 }
 }
-}
-child[concept color=black!70,sibling angle=71] {
-node[concept] {(mehreren) Architektur(en)}
-[clockwise from = 315]
-child[concept color=black!70,sibling angle=60] {
-node[concept] {alternative Realisierungen}
+child[concept color=red, level distance = 10.74em,sibling angle=60] {
+node[concept] {Besonders bzgl. Zeitverhalten starke Abweichungen moeglich}
 [clockwise from = 0]
 }
-child[concept color=black!70,sibling angle=60] {
-node[concept] {evtl. versch. Abstraktionsebenen}
+}
+child[concept color=black,sibling angle=68] {
+node[concept] {Node Nr3}
 [clockwise from = 0]
 }
-child[concept color=green,sibling angle=60] {
-node[concept] {Defini\-tionsmoeg\-lichkeiten}
-[counterclockwise from = 101]
-child[concept color=green!60,sibling angle=60] {
-node[concept] {Beschreibung durch Prozesse}
+child[concept color=black,sibling angle=68] {
+node[concept] {Node Nr4}
 [clockwise from = 0]
 }
-child[concept color=green!60, level distance = 5.79em,sibling angle=60] {
-node[concept] {Be\-schreibung durch nebenlaeu\-fige Signalzuwei\-sungen}
+child[concept color=red!70, level distance = 31.4em,sibling angle=68] {
+node[concept] {Zeittafel}
+[clockwise from = 0]
+child[concept color=red!70,sibling angle=60] {
+node[concept] {1983}
+[clockwise from = 90]
+child[concept color=red!70,sibling angle=90] {
+node[concept] {VHDL 7.2}
 [clockwise from = 0]
 }
-child[concept color=green!60, level distance = 9.92em,sibling angle=60] {
-node[concept] {Be\-schreibung durch Instanziier\-ung und Verbindung v. Kompo\-nenten}
+child[concept color=red!70,sibling angle=90] {
+node[concept] {1987}
+[clockwise from = 90]
+child[concept color=red!70, level distance = 7em,sibling angle=90] {
+node[concept] {Standardisierung von IEEE
+als Standard 1076 (VHDL-87)}
+[clockwise from = 90]
+}
+child[concept color=red!70,sibling angle=90] {
+node[concept] {1993}
+[clockwise from = 90]
+child[concept color=red!70,sibling angle=90] {
+node[concept] {Ueberarbeitung durch IEEE (VHDL-93)}
 [clockwise from = 0]
+}
+child[concept color=red!70,sibling angle=90] {
+node[concept] {2000}
+[clockwise from = 90]
+child[concept color=red!70,sibling angle=90] {
+node[concept] {Weitere Ueberarbeitungen}
+[clockwise from = 0]
+}
+child[concept color=red!70,sibling angle=90] {
+node[concept] {2003}
+[clockwise from = 90]
+child[concept color=red!70,sibling angle=60] {
+node[concept] {Erweiterung des Standards}
+[counterclockwise from = 0]
+child[concept color=blue,sibling angle=60] {
+node[concept] {Modellierung rekonfigurierbarer Logik}
+[clockwise from = 0]
+}
+child[concept color=blue, level distance = 7em,sibling angle=60] {
+node[concept] {Integration von Aspekten der formalen Vertifikation}
+[clockwise from = 0]
+}
+}
+}
+}
 }
 }
 }

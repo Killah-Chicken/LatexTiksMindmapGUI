@@ -96,6 +96,8 @@ namespace LatexTiksMindMapTool
             levelDistanceNumericUpDown.Value = Convert.ToDecimal(current.getLevelDistance());
             enableLevelDistanceCeckBox.Checked = current.getLevelDistanceEnabled();
             siblingAngleChildrenNumericUpDown.Value = current.getSiblingAngleChildren();
+            textWidthEnabledCheckBox.Checked = current.getTextWidthEnabled();
+            textWidthNumericUpDown.Value = current.getTextWidth();
             enableSubmitting = true;
         }
 
@@ -126,6 +128,8 @@ namespace LatexTiksMindMapTool
                 current.setLevelDistanceEnabled(enableLevelDistanceCeckBox.Checked);
                 current.setLevelDistance(Convert.ToDouble(levelDistanceNumericUpDown.Value));
                 current.setSiblingAngleChildren(Convert.ToInt16(siblingAngleChildrenNumericUpDown.Value));
+                current.setTextWidth(Convert.ToInt16(textWidthNumericUpDown.Value));
+                current.setTextWidthEnabled(textWidthEnabledCheckBox.Checked);
             }
         }
         private void createLatexCode(string fileName, string path, bool createFromRootNode = true)
@@ -137,6 +141,7 @@ namespace LatexTiksMindMapTool
                 startNode.Node2LatexCode() +
                 ";\n" +
                 "\\end{tikzpicture}\\end{document};";
+            code = code.Replace("ä", "{\\\"a}").Replace("ü", "{\\\"u}").Replace("ö", "{\\\"ö}").Replace("Ä", "{\\\"A}").Replace("Ü", "{\\\"U}").Replace("Ö", "{\\\"O}").Replace("ß","{\\ss}");
             string pathName = path +fileName  + ".tex";
             System.IO.File.WriteAllText(pathName, code);
         }
@@ -376,6 +381,24 @@ namespace LatexTiksMindMapTool
             System.IO.File.Create(workingDirectory  + newName + ".tex");
             System.IO.File.Replace(workingDirectory + oldName + ".tex", workingDirectory + newName + ".tex", pathTemp+newName+"_bu.tex");
             loadFileNames();
+        }
+
+        private void textWidthEnabledCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            textWidthTrackBar.Enabled = textWidthEnabledCheckBox.Checked;
+            textWidthNumericUpDown.Enabled = textWidthEnabledCheckBox.Checked;
+            setCurrentNodeAttributes();
+        }
+
+        private void textWidthNumericUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            textWidthTrackBar.Value = Convert.ToInt16(textWidthNumericUpDown.Value);
+            setCurrentNodeAttributes();
+        }
+
+        private void textWidthTrackBar_Scroll(object sender, EventArgs e)
+        {
+            textWidthNumericUpDown.Value = textWidthTrackBar.Value;
         }
     }
 }

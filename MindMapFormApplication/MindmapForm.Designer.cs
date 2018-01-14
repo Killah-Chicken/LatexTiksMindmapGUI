@@ -64,12 +64,17 @@
             this.renameButton = new System.Windows.Forms.Button();
             this.newNameTextBox = new System.Windows.Forms.TextBox();
             this.tempRootCheckBox = new System.Windows.Forms.CheckBox();
+            this.textWidthNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.textWidthEnabledCheckBox = new System.Windows.Forms.CheckBox();
+            this.textWidthTrackBar = new System.Windows.Forms.TrackBar();
             ((System.ComponentModel.ISupportInitialize)(this.startAngleNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.levelDistanceTrackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.levelDistanceNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.siblingAngleChildrenNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.startAngleTrackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.siblingAngleChildrenTrackBar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textWidthNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textWidthTrackBar)).BeginInit();
             this.SuspendLayout();
             // 
             // childrenListBox
@@ -423,11 +428,49 @@
             this.tempRootCheckBox.Text = "(...to temporary root)";
             this.tempRootCheckBox.UseVisualStyleBackColor = true;
             // 
+            // textWidthNumericUpDown
+            // 
+            this.textWidthNumericUpDown.Enabled = false;
+            this.textWidthNumericUpDown.Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.textWidthNumericUpDown.Location = new System.Drawing.Point(1107, 51);
+            this.textWidthNumericUpDown.Name = "textWidthNumericUpDown";
+            this.textWidthNumericUpDown.Size = new System.Drawing.Size(77, 20);
+            this.textWidthNumericUpDown.TabIndex = 42;
+            this.textWidthNumericUpDown.ValueChanged += new System.EventHandler(this.textWidthNumericUpDown_ValueChanged);
+            // 
+            // textWidthEnabledCheckBox
+            // 
+            this.textWidthEnabledCheckBox.AutoSize = true;
+            this.textWidthEnabledCheckBox.Location = new System.Drawing.Point(970, 26);
+            this.textWidthEnabledCheckBox.Name = "textWidthEnabledCheckBox";
+            this.textWidthEnabledCheckBox.Size = new System.Drawing.Size(113, 17);
+            this.textWidthEnabledCheckBox.TabIndex = 41;
+            this.textWidthEnabledCheckBox.Text = "enable Text Width";
+            this.textWidthEnabledCheckBox.UseVisualStyleBackColor = true;
+            this.textWidthEnabledCheckBox.CheckedChanged += new System.EventHandler(this.textWidthEnabledCheckBox_CheckedChanged);
+            // 
+            // textWidthTrackBar
+            // 
+            this.textWidthTrackBar.Enabled = false;
+            this.textWidthTrackBar.Location = new System.Drawing.Point(953, 51);
+            this.textWidthTrackBar.Maximum = 100;
+            this.textWidthTrackBar.Name = "textWidthTrackBar";
+            this.textWidthTrackBar.Size = new System.Drawing.Size(148, 45);
+            this.textWidthTrackBar.TabIndex = 40;
+            this.textWidthTrackBar.Scroll += new System.EventHandler(this.textWidthTrackBar_Scroll);
+            // 
             // MindmapForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1232, 598);
+            this.Controls.Add(this.textWidthNumericUpDown);
+            this.Controls.Add(this.textWidthEnabledCheckBox);
+            this.Controls.Add(this.textWidthTrackBar);
             this.Controls.Add(this.tempRootCheckBox);
             this.Controls.Add(this.newNameTextBox);
             this.Controls.Add(this.renameButton);
@@ -472,6 +515,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.siblingAngleChildrenNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.startAngleTrackBar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.siblingAngleChildrenTrackBar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textWidthNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textWidthTrackBar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -514,6 +559,9 @@
         private System.Windows.Forms.Button renameButton;
         private System.Windows.Forms.TextBox newNameTextBox;
         private System.Windows.Forms.CheckBox tempRootCheckBox;
+        private System.Windows.Forms.NumericUpDown textWidthNumericUpDown;
+        private System.Windows.Forms.CheckBox textWidthEnabledCheckBox;
+        private System.Windows.Forms.TrackBar textWidthTrackBar;
     }
 }
 
